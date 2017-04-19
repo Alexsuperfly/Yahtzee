@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 public class JDice extends JPanel {
 		private int value;
 		private Random r = new Random();
-		private int SIDE = 29;
+		private int SIDE;
 		private boolean selected = false;
 		private Color color = Color.BLACK;
 		
@@ -20,7 +20,10 @@ public class JDice extends JPanel {
 	            }
 	        });
 		  }
-		
+		public void setSIDE()
+		{
+			SIDE = (int)(getWidth() / 7);
+		}
 		public void set()
 		{
 			if(selected)
@@ -61,6 +64,7 @@ public class JDice extends JPanel {
 		public void paintComponent(Graphics g) {
 		    super.paintComponent(g);
 		    g.setColor(color);
+		    setSIDE();
 		    switch (value) {
 		    case 1:
 		      g.fillOval(3 * SIDE, 3 * SIDE, SIDE, SIDE);

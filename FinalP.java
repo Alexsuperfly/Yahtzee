@@ -27,9 +27,9 @@ public class FinalP {
 		}
 		
 	   Yahtzee yFrame = new Yahtzee();
-	   
+	   yFrame.setSize( 1200, 750 );
 	   JPanel top_bar = new JPanel();
-	   top_bar.setPreferredSize(new Dimension(1200, 200));
+	   top_bar.setPreferredSize(new Dimension(yFrame.getWidth(), (int)(yFrame.getWidth() / 6)));
 	   GridLayout experimentLayout = new GridLayout(1,5);
 	   experimentLayout.setVgap(50);
 	   experimentLayout.setHgap(50);
@@ -51,7 +51,7 @@ public class FinalP {
 		   	
 	   }
 	   
-	   yFrame.add(top_bar, BorderLayout.PAGE_START);
+	   yFrame.add(top_bar, BorderLayout.NORTH);
 	   yFrame.add(players[0].chart, BorderLayout.CENTER);
 	   JButton b1 = new JButton("Reroll Dice");
 	   b1.addActionListener(new ActionListener(){
@@ -74,7 +74,7 @@ public class FinalP {
 	   
 	   yFrame.setResizable(false);
 	   yFrame.setBackground(Color.WHITE);
-	   yFrame.setSize( 1200, 750 );
+	   
 	   yFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 	   yFrame.setVisible( true );
 	    // set frame size
