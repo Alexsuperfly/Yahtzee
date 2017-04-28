@@ -1,17 +1,22 @@
+//Bret Owens - bto14
+//Alex Sumner - acs14k
+
+
+//Imports for Dice
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 import java.awt.event.*;
 import javax.swing.JPanel;
 
-public class JDice extends JPanel {
-		private int value;
-		private Random r = new Random();
+public class JDice extends JPanel {	//Will draw a single dice
+		private int value;	//Number of dice
+		private Random r = new Random();	//For random number
 		private int SIDE;
-		private boolean selected = false;
-		private Color color = Color.BLACK;
+		private boolean selected = false;	//Selected to be rerolled
+		private Color color = Color.BLACK;	//Default color
 		
-		JDice() {
+		JDice() {	//Assigns value and adds listener
 		    roll();
 		    addMouseListener(new MouseAdapter() {
 	            public void mouseClicked(MouseEvent me) {
@@ -20,11 +25,11 @@ public class JDice extends JPanel {
 	            }
 	        });
 		  }
-		public void setSIDE()
+		public void setSIDE()	//Set size of circles
 		{
 			SIDE = (int)(getWidth() / 7);
 		}
-		public void set()
+		public void set()	//set selected or un-selected
 		{
 			if(selected)
 			{
@@ -39,28 +44,30 @@ public class JDice extends JPanel {
 			}
 		}
 		
-		public boolean isSelected()
+		public boolean isSelected()	//check to see if selected
 		{
 			return selected;
 		}
 		
-		public void roll()
+		public void roll()	//assigns new value
 		{
 			value = getValue();
 		    repaint();
 		    
 		}
 		
-		public String value()
+		public String value()	//string of dice value
 		{
 			return Integer.toString(value);
 		}
 		
 		
-		private int getValue()
+		private int getValue()	//assigns new dice value
 		{
 			return r.nextInt(6) + 1;
 		}
+		
+		//Paints circles on dice
 		public void paintComponent(Graphics g) {
 		    super.paintComponent(g);
 		    g.setColor(color);
@@ -101,7 +108,7 @@ public class JDice extends JPanel {
 		      break;
 		    }
 	}
-		
+		//Beginning of checks for if valid for combo
 		public static boolean Aces(String s)
         {
                 if(s.contains("1"))
@@ -164,7 +171,7 @@ public class JDice extends JPanel {
 
         public static boolean ThreeOfAKind(String s)
         {
-                int values[] = new int[6];
+                int values[] = new int[7];
                 values[0] = 0;
                 for(int i = 0; i < s.length(); i++)
                 {
@@ -188,13 +195,17 @@ public class JDice extends JPanel {
                     {
                     	values[5]++;
                     }
+                    else if(s.charAt(i) == '6')
+                    {
+                    	values[6]++;
+                    }
                 }
 
                 boolean Three = false;
 
-                for(int i = 1; i <= 7; i++)
+                for(int i = 1; i < 7; i++)
                 {
-                        if(values[i] == 3)
+                        if(values[i] >= 3)
                         {
                                 Three = true;
                         }
@@ -205,7 +216,7 @@ public class JDice extends JPanel {
 
         public static boolean FourOfAKind(String s) 
         {
-                int values[] = new int[6];
+                int values[] = new int[7];
                 values[0] = 0;
                 for(int i = 0; i < s.length(); i++)
                 {
@@ -229,13 +240,17 @@ public class JDice extends JPanel {
                     {
                     	values[5]++;
                     }
+                    else if(s.charAt(i) == '6')
+                    {
+                    	values[6]++;
+                    }
                 }
 
                 boolean Four = false; 
 
-                for(int i = 1; i <= 7; i++)
+                for(int i = 1; i < 7; i++)
                 {
-                        if(values[i] == 4)
+                        if(values[i] >= 4)
                         {
                                 Four = true;
                         }    
@@ -246,7 +261,7 @@ public class JDice extends JPanel {
 
         public static boolean Yaht(String s)        
         {
-                int values[] = new int[6];
+                int values[] = new int[7];
                 values[0] = 0;
                 for(int i = 0; i < s.length(); i++)
                 {
@@ -270,11 +285,15 @@ public class JDice extends JPanel {
                     {
                     	values[5]++;
                     }
+                    else if(s.charAt(i) == '6')
+                    {
+                    	values[6]++;
+                    }
                 }
 
                 boolean Five = false; 
 
-                for(int i = 1; i <= 7; i++)
+                for(int i = 1; i < 7; i++)
                 {
                         if(values[i] == 5)
                         {
@@ -287,7 +306,7 @@ public class JDice extends JPanel {
 
         public static boolean FullHouse(String s)
         {
-                Integer values[] = new Integer[6];
+                int values[] = new int[7];
                 values[0] = 0;
                 for(int i = 0; i < s.length(); i++)
                 {
@@ -311,12 +330,16 @@ public class JDice extends JPanel {
                         {
                         	values[5]++;
                         }
+                        else if(s.charAt(i) == '6')
+                        {
+                        	values[6]++;
+                        }
                 }
 
                 boolean Three = false;
                 boolean Two = false;
 
-                for(int i = 1; i <= 7; i++)
+                for(int i = 1; i < 7; i++)
                 {
                         if(values[i] == 3)
                         {

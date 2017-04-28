@@ -1,17 +1,19 @@
+//Bret Owens - bto14
+//Alex Sumner - acs14k
+
+
+
 import javax.swing.*;
 
 import java.awt.Color;
 import java.awt.event.*;
-import java.awt.*;
-import java.awt.geom.*;
-import java.util.Random;
 
-public class Yahtzee extends JFrame{
+public class Yahtzee extends JFrame{	//Setup for basic frame of game
 	private JDesktopPane Pane;
 	
 	public Yahtzee()
 	{
-		JMenuBar menu = new JMenuBar();
+		JMenuBar menu = new JMenuBar();	//Creates menu for main frame
 		JMenu add = new JMenu("Quit (Alt - q)");
 		add.setMnemonic('q');
 		JMenuItem item = new JMenuItem("Exit Program (Alt - x)");
@@ -20,7 +22,7 @@ public class Yahtzee extends JFrame{
 		add.add(item);
 		menu.add(add);
 		
-		item.addActionListener(
+		item.addActionListener(	//Action listener for quit
 			new ActionListener() // anonymous inner class
 		    {  
 		      	 public void actionPerformed( ActionEvent event ) 
@@ -30,11 +32,10 @@ public class Yahtzee extends JFrame{
 		     });
 		
 		setJMenuBar(menu);
-		Pane = new  JDesktopPane();
+		Pane = new  JDesktopPane();	//Main pane for game
 		
 		setTitle("Yahtzee");
-		
-		
+		Pane.setBackground(Color.white);
 		getContentPane().add(Pane);
 	}
 	
